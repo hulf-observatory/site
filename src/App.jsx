@@ -7,9 +7,8 @@ import TerrainHero from './components/layout/TerrainHero';
 import Home from './pages/Home';
 import About from './pages/About';
 import Disclaimer from './pages/Disclaimer';
-import DataObservatory from './pages/explore/DataObservatory';
 import ExternalRedirect from './components/ui/ExternalRedirect';
-import { MAPS_URL } from './lib/links';
+import { MAPS_URL, DATA_URL } from './lib/links';
 import ThematicAreas from './pages/explore/ThematicAreas';
 import HyderabadWaterscapes from './pages/stories/HyderabadWaterscapes';
 import GhmcWardsCensus from './pages/stories/GhmcWardsCensus';
@@ -69,7 +68,9 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
-          <Route path="/explore/data-observatory" element={<DataObservatory />} />
+          {/* the in-site Data Observatory page is offline until the GeoLibre-based page exists;
+              its code stays in pages/explore/DataObservatory.jsx. "Data sources" is the open-data site. */}
+          <Route path="/explore/data-observatory" element={<ExternalRedirect to={DATA_URL} />} />
           {/* the old spatial data portal is retired; old links go to the map viewer */}
           <Route path="/explore/spatial-data-portal" element={<ExternalRedirect to={MAPS_URL + '/'} />} />
           <Route path="/explore/thematic-areas" element={<ThematicAreas />} />

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
+import { DATA_URL } from '../../lib/links';
 
 export default function AppHeader() {
   const { pathname } = useLocation();
@@ -26,7 +27,7 @@ export default function AppHeader() {
       {isHome ? (
         <>
           <nav className="home-links home-links-desktop" aria-label="Site">
-            <Link to="/explore/data-observatory">Data sources</Link>
+            <a href={DATA_URL} rel="noopener">Data sources</a>
             <Link to="/about">About</Link>
           </nav>
           <button
@@ -40,7 +41,7 @@ export default function AppHeader() {
           </button>
           {menuOpen && (
             <nav className="home-menu" aria-label="Site">
-              <Link to="/explore/data-observatory">Data sources</Link>
+              <a href={DATA_URL} rel="noopener">Data sources</a>
               <Link to="/about">About</Link>
               <Link to="/disclaimer">Disclaimer</Link>
             </nav>

@@ -7,3 +7,6 @@ export const MAPS_URL = trim(import.meta.env.VITE_MAPS_URL || 'https://maps.hyde
 
 // City Timeline (archive maps side by side); keeps its trailing slash: it is linked as-is
 export const TIMELINE_URL = trim(import.meta.env.VITE_TIMELINE_URL || 'https://timeline.hyderabad.urbanobservatory.in') + '/';
+
+// The open-data site (catalogue, downloads). Stands in for the in-site Data Observatory page.
+export const DATA_URL = (import.meta.env.VITE_DATA_URL || 'https://data.hyderabad.urbanobservatory.in') + '/';
