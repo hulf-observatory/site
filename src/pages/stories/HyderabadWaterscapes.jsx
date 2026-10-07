@@ -1,7 +1,8 @@
 import ImageComparison from '../../components/ui/ImageComparison.jsx';
 import { mapsLink } from '../../lib/mapsEmbed';
+import { TIMELINE_URL } from '../../lib/links';
 
-const BASE = '/assets/images/hyderabad-waterscapes';
+const BASE = `${import.meta.env.BASE_URL}assets/images/hyderabad-waterscapes`;
 
 export default function HyderabadWaterscapes() {
   return (
@@ -66,13 +67,13 @@ export default function HyderabadWaterscapes() {
           </div>
         </div>
 
-        {/* City Timeline replaces the Felt map that used to sit here */}
+        {/* City Timeline: the archive maps that used to be embedded here, as their own app */}
         <div style={{ marginTop: 32, padding: '24px 28px', border: '1px solid #E5E7EB', borderRadius: 12, background: '#fff', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
           <div style={{ flex: '1 1 320px' }}>
             <h3 className="story-section-label">City Timeline</h3>
             <p className="story-prose-text" style={{ margin: 0 }}>Put Hyderabad's archive maps, toposheets and satellite images side by side, from 1908 to today. Pan one and they all move; step through the years or swipe between two.</p>
           </div>
-          <a href="/timeline/" className="home-action">
+          <a href={TIMELINE_URL} rel="noopener" className="home-action">
             Open City Timeline
             <svg className="home-action-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="1.5" d="M5 19L19 5M19 5H5M19 5V19" />

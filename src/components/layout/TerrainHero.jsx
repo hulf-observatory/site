@@ -39,7 +39,7 @@ export default function TerrainHero() {
 
   useEffect(() => {
     let alive = true;
-    fetch('/data/terrain-hmda.json')
+    fetch(`${import.meta.env.BASE_URL}data/terrain-hmda.json`)
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => alive && j && setData(j))
       .catch(() => {});

@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MAPS_URL } from '../lib/links';
 
 const ACTIONS = [
-  // the Spatial Data Repository (replaced the Felt portal) is its own subdomain
-  { label: 'Layers', href: 'https://maps.hyderabad.urbanobservatory.in/', external: true },
+  // the Spatial Data Repository (map viewer) is its own site
+  { label: 'Layers', href: MAPS_URL + '/', external: true },
   { label: 'Themes', href: '/explore/thematic-areas' },
 ];
 
@@ -36,7 +37,7 @@ export default function Home() {
       {hint && <p className="home-hint">Dive deeper — explore the city's layers and themes</p>}
       <div className={`home-actions${hint ? ' is-hint' : ''}`}>
         {ACTIONS.map(({ label, href, external }) => (external ? (
-          <a key={label} href={href} className="home-action">
+          <a key={label} href={href} rel="noopener" className="home-action">
             {label}
             <ArrowIcon />
           </a>

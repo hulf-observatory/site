@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import FilterBubbles from '../../components/ui/FilterBubbles.jsx';
 import ExpandableCard from '../../components/ui/ExpandableCard.jsx';
+import { TIMELINE_URL } from '../../lib/links';
 
 const FILTERS = [
   { key: 'all', label: 'All Themes' },
@@ -74,7 +75,7 @@ const CARDS = [
     themeLabel: 'URBAN HERITAGE & ARCHIVE, LAND USE & LAND COVER',
     kind: 'tool',
     title: 'City Timeline',
-    link: '/timeline/',
+    link: TIMELINE_URL,
     external: true,
     description: "See how Hyderabad changed. Compare archive maps, toposheets and satellite images from 1908 to today, and the 2031 land use plans, side by side, on a time slider, or by swiping between two years.",
   },
@@ -179,7 +180,7 @@ export default function ThematicAreas() {
             {!card.comingSoon && (
               <p style={{ marginTop: 16 }}>
                 {card.external ? (
-                  <a href={card.link} style={{ fontWeight: 500 }}>
+                  <a href={card.link} rel="noopener" style={{ fontWeight: 500 }}>
                     Click here to explore &rarr;
                   </a>
                 ) : (

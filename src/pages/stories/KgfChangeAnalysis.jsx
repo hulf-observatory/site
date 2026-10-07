@@ -1,26 +1,28 @@
 import ImageCarousel from '../../components/ui/ImageCarousel.jsx';
 
+const IMG = `${import.meta.env.BASE_URL}assets/images/kgf-change-analysis`;
+
 const CAROUSEL_ITEMS = [
   {
-    src: '/assets/images/kgf-change-analysis/240409_KGF_Page_1.jpg',
+    src: `${IMG}/240409_KGF_Page_1.jpg`,
     alt: 'Pre-Imagery Kancha Gachibowli',
     label: 'Pre-Imagery: ',
     caption: 'Satellite view of Kancha Gachibowli on 28 March 2025.',
   },
   {
-    src: '/assets/images/kgf-change-analysis/240409_KGF_Page_2.jpg',
+    src: `${IMG}/240409_KGF_Page_2.jpg`,
     alt: 'Post-Imagery Kancha Gachibowli',
     label: 'Post-Imagery: ',
     caption: 'Satellite view of Kancha Gachibowli on 07 April 2025.',
   },
   {
-    src: '/assets/images/kgf-change-analysis/240409_KGF_Page_3.jpg',
+    src: `${IMG}/240409_KGF_Page_3.jpg`,
     alt: 'NDVI Change Kancha Gachibowli',
     label: 'NDVI Change: ',
     caption: 'Illustrates the approximate green cover loss of 102 Acres within the boundary, derived from NDVI analysis.',
   },
   {
-    src: '/assets/images/kgf-change-analysis/240409_KGF_Page_4.jpg',
+    src: `${IMG}/240409_KGF_Page_4.jpg`,
     alt: 'Land Disturbance Kancha Gachibowli',
     label: 'Land Disturbance: ',
     caption: 'Shows the approximate land area disturbed, estimated at 115 Acres, based on observed changes.',

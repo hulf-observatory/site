@@ -9,6 +9,7 @@ import About from './pages/About';
 import Disclaimer from './pages/Disclaimer';
 import DataObservatory from './pages/explore/DataObservatory';
 import ExternalRedirect from './components/ui/ExternalRedirect';
+import { MAPS_URL } from './lib/links';
 import ThematicAreas from './pages/explore/ThematicAreas';
 import HyderabadWaterscapes from './pages/stories/HyderabadWaterscapes';
 import GhmcWardsCensus from './pages/stories/GhmcWardsCensus';
@@ -69,8 +70,8 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/explore/data-observatory" element={<DataObservatory />} />
-          {/* the Felt-based portal is retired; old links go to the new viewer */}
-          <Route path="/explore/spatial-data-portal" element={<ExternalRedirect to="https://maps.hyderabad.urbanobservatory.in/" />} />
+          {/* the old spatial data portal is retired; old links go to the map viewer */}
+          <Route path="/explore/spatial-data-portal" element={<ExternalRedirect to={MAPS_URL + '/'} />} />
           <Route path="/explore/thematic-areas" element={<ThematicAreas />} />
           <Route path="/stories/hyderabad-waterscapes" element={<HyderabadWaterscapes />} />
           <Route path="/stories/ghmc-wards-census" element={<GhmcWardsCensus />} />
