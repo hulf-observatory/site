@@ -21,8 +21,8 @@ npm run build      # dist/ (postbuild copies index.html to 404.html for SPA deep
 | Variable            | Default                                        | Purpose |
 |---------------------|------------------------------------------------|---------|
 | `VITE_BASE`         | `/`                                            | Path the site is served from (`/site/` on the project Pages URL). |
-| `VITE_MAPS_URL`     | `https://hulf-observatory.github.io/maps`      | Spatial Data Repository (map viewer): Layers button, story embeds. |
-| `VITE_TIMELINE_URL` | `https://hulf-observatory.github.io/timeline/` | City Timeline links. |
+| `VITE_MAPS_URL`     | `https://maps.hyderabad.urbanobservatory.in`      | Spatial Data Repository (map viewer): Layers button, story embeds. |
+| `VITE_TIMELINE_URL` | `https://timeline.hyderabad.urbanobservatory.in/` | City Timeline links. |
 
 Example: `VITE_MAPS_URL=http://127.0.0.1:8124 npm run dev` tests the map embeds against a
 local viewer.
