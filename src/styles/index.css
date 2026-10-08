@@ -852,6 +852,14 @@ a {
   }
 }
 
+/* ── Not-found page links ── */
+.not-found-links { display: flex; flex-wrap: wrap; gap: 28px; }
+.not-found-links a {
+  font-family: var(--font-narrow); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent;
+}
+.not-found-links a:hover, .not-found-links a:focus-visible { border-bottom-color: var(--ink); }
+
 /* ── Narrow content pages (stories, disclaimer) ── */
 .content-main--lg {
   max-width: 1024px;

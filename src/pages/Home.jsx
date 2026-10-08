@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MAPS_URL } from '../lib/links';
+import useDocumentTitle from '../lib/useDocumentTitle';
 
 const ACTIONS = [
   // the Spatial Data Repository (map viewer) is its own site
@@ -15,6 +16,7 @@ const ArrowIcon = () => (
 );
 
 export default function Home() {
+  useDocumentTitle();
   // a click or tap on the terrain itself nudges the eye to the two buttons
   const [hint, setHint] = useState(false);
   const timer = useRef(0);

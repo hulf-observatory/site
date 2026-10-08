@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useDocumentTitle from '../lib/useDocumentTitle';
 
 const PlusMinusIcon = ({ expanded }) => (
   <svg
@@ -86,6 +87,7 @@ const ADVISORS = [
 ];
 
 export default function About() {
+  useDocumentTitle('About');
   return (
     <main className="content-main">
       <div className="content-block">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 import { DATA_URL } from '../../lib/links';
@@ -7,6 +7,30 @@ export default function AppHeader() {
   const { pathname } = useLocation();
   const isHome = pathname === '/';
   const [menuOpen, setMenuOpen] = useState(false);
+  const burgerRef = useRef(null);
+  const menuRef = useRef(null);
+
+  // the menu is a one-shot: it closes when the route changes, on Escape (focus goes back
+  // to the burger) and on any pointer down outside the burger and the menu card
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onKey = (e) => {
+      if (e.key !== 'Escape') return;
+      setMenuOpen(false);
+      burgerRef.current?.focus();
+    };
+    const onDown = (e) => {
+      if (burgerRef.current?.contains(e.target) || menuRef.current?.contains(e.target)) return;
+      setMenuOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onDown);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onDown);
+    };
+  }, [menuOpen]);
 
   return (
     <header className={`app-header${isHome ? ' is-home' : ''}`}>
@@ -32,15 +56,17 @@ export default function AppHeader() {
           </nav>
           <button
             type="button"
+            ref={burgerRef}
             className={`home-burger${menuOpen ? ' is-open' : ''}`}
             aria-label="Menu"
             aria-expanded={menuOpen}
+            aria-controls="home-menu"
             onClick={() => setMenuOpen((o) => !o)}
           >
             <span /><span /><span />
           </button>
           {menuOpen && (
-            <nav className="home-menu" aria-label="Site">
+            <nav className="home-menu" id="home-menu" ref={menuRef} aria-label="Site">
               <a href={DATA_URL} rel="noopener">Data sources</a>
               <Link to="/about">About</Link>
               <Link to="/disclaimer">Disclaimer</Link>

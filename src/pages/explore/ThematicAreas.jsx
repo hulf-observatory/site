@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import FilterBubbles from '../../components/ui/FilterBubbles.jsx';
 import ExpandableCard from '../../components/ui/ExpandableCard.jsx';
 import { TIMELINE_URL } from '../../lib/links';
+import useDocumentTitle from '../../lib/useDocumentTitle';
 
 const FILTERS = [
   { key: 'all', label: 'All Themes' },
@@ -124,6 +125,7 @@ const CARDS = [
 ];
 
 export default function ThematicAreas() {
+  useDocumentTitle('Thematic Areas');
   const [tab, setTab] = useState('tools');
   const [selected, setSelected] = useState(new Set(['all']));
 

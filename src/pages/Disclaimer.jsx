@@ -1,4 +1,6 @@
+import useDocumentTitle from '../lib/useDocumentTitle';
 export default function Disclaimer() {
+  useDocumentTitle('Disclaimer');
   return (
     <main className="content-main" style={{ maxWidth: '64rem' }}>
       <div className="content-block">

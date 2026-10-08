@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+import useDocumentTitle from '../../lib/useDocumentTitle';
 
 export default function GhmcWardsCensus() {
+  useDocumentTitle('GHMC Ward-Level Census Data, 2011');
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://public.flourish.studio/resources/embed.js';

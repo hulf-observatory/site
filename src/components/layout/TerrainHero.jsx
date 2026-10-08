@@ -140,6 +140,14 @@ export default function TerrainHero() {
     const n = lines[0].z.length;
     let raf = 0;
     const onMove = (e) => {
+      // the header, its menu and any link or button are not terrain: a pointer over them
+      // clears the probe instead of reading the ridgeline underneath (the burger tap bug)
+      const t = e.target instanceof Element ? e.target : null;
+      if (t && t.closest('.app-header, .home-menu, a, button, nav')) {
+        if (raf) { cancelAnimationFrame(raf); raf = 0; }
+        setProbe(null);
+        return;
+      }
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = 0;

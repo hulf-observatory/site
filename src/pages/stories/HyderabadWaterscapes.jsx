@@ -1,10 +1,12 @@
 import ImageComparison from '../../components/ui/ImageComparison.jsx';
 import { mapsLink } from '../../lib/mapsEmbed';
 import { TIMELINE_URL } from '../../lib/links';
+import useDocumentTitle from '../../lib/useDocumentTitle';
 
 const BASE = `${import.meta.env.BASE_URL}assets/images/hyderabad-waterscapes`;
 
 export default function HyderabadWaterscapes() {
+  useDocumentTitle("Hyderabad's forgotten waterscapes");
   return (
     <main className="content-main content-main--lg">
       <div className="content-block">

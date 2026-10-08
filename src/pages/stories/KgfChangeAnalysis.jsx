@@ -1,4 +1,5 @@
 import ImageCarousel from '../../components/ui/ImageCarousel.jsx';
+import useDocumentTitle from '../../lib/useDocumentTitle';
 
 const IMG = `${import.meta.env.BASE_URL}assets/images/kgf-change-analysis`;
 
@@ -30,6 +31,7 @@ const CAROUSEL_ITEMS = [
 ];
 
 export default function KgfChangeAnalysis() {
+  useDocumentTitle('Kancha Gachibowli Forest Change Analysis');
   return (
     <main className="content-main content-main--lg">
       <div className="content-block">

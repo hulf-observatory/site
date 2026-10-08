@@ -13,6 +13,7 @@ import ThematicAreas from './pages/explore/ThematicAreas';
 import HyderabadWaterscapes from './pages/stories/HyderabadWaterscapes';
 import GhmcWardsCensus from './pages/stories/GhmcWardsCensus';
 import KgfChangeAnalysis from './pages/stories/KgfChangeAnalysis';
+import NotFound from './pages/NotFound';
 
 const draftTheme = {
   token: {
@@ -77,6 +78,8 @@ export default function App() {
           <Route path="/stories/hyderabad-waterscapes" element={<HyderabadWaterscapes />} />
           <Route path="/stories/ghmc-wards-census" element={<GhmcWardsCensus />} />
           <Route path="/stories/kgf-change-analysis" element={<KgfChangeAnalysis />} />
+          {/* anything else: Pages serves 404.html (a copy of index.html), so the router lands here */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <AppFooter />
       </div>
