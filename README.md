@@ -1,12 +1,25 @@
 # Hyderabad Urban Observatory — main site
 
-The portal site of the Hyderabad Urban Observatory: home page with the HMDA terrain,
-Thematic Areas, data sources, stories (Hyderabad's waterscapes, GHMC ward census,
-Kancha Gachibowli change analysis), About and Disclaimer. React 19 + Vite + Ant Design,
-no backend. Built by GitHub Actions and published to GitHub Pages.
+The portal site of the Hyderabad Urban Observatory: home page with the HMDA terrain and the
+three buttons (Layers, Tools, Stories), About and Disclaimer, plus redirects of the old
+`/explore/…` and `/stories/…` addresses. React 19 + Vite + Ant Design, no backend. Built by
+GitHub Actions and published to GitHub Pages.
+
+The Observatory's web presence is three small sites that share one look:
+
+| Site | Repo | Content |
+|---|---|---|
+| https://hyderabad.urbanobservatory.in | `site` (this repo) | home, About, Disclaimer, redirects |
+| https://tools.hyderabad.urbanobservatory.in | `tools` | the tool cards (the former Thematic Areas "Tools" tab) |
+| https://stories.hyderabad.urbanobservatory.in | `stories` | the stories & datasets cards and the story pages |
+
+The shared pieces (header, footer, logo, not-found page, `links.js`, `styles/index.css`,
+fonts, favicon) are **copied** into each repo rather than packaged: three copies to keep in
+step by hand, which is cheaper than a shared package for code this small. The design reference
+is `DESIGN-SYSTEM.md` in the observatory-work repo.
 
 The maps live in a separate app (the Spatial Data Repository viewer), the archive maps in
-the City Timeline app; this site only links to and embeds them.
+the City Timeline app, the data catalogue on the open-data site; this site only links to them.
 
 ## Local development
 
@@ -21,11 +34,14 @@ npm run build      # dist/ (postbuild copies index.html to 404.html for SPA deep
 | Variable            | Default                                        | Purpose |
 |---------------------|------------------------------------------------|---------|
 | `VITE_BASE`         | `/`                                            | Path the site is served from (`/site/` on the project Pages URL). |
-| `VITE_MAPS_URL`     | `https://maps.hyderabad.urbanobservatory.in`      | Spatial Data Repository (map viewer): Layers button, story embeds. |
+| `VITE_MAPS_URL`     | `https://maps.hyderabad.urbanobservatory.in`      | Spatial Data Repository (map viewer): Layers button, `/explore/spatial-data-portal` redirect. |
 | `VITE_TIMELINE_URL` | `https://timeline.hyderabad.urbanobservatory.in/` | City Timeline links. |
+| `VITE_DATA_URL`     | `https://data.hyderabad.urbanobservatory.in`      | Open-data site: "Data sources", `/explore/data-observatory` redirect. |
+| `VITE_TOOLS_URL`    | `https://tools.hyderabad.urbanobservatory.in/`    | Tools site: home button, `/explore/thematic-areas` redirect. |
+| `VITE_STORIES_URL`  | `https://stories.hyderabad.urbanobservatory.in/`  | Stories site: home button, `/stories/…` redirects. |
 
-Example: `VITE_MAPS_URL=http://127.0.0.1:8124 npm run dev` tests the map embeds against a
-local viewer.
+Example: `VITE_TOOLS_URL=http://localhost:5174/ npm run dev` points the Tools button at a local
+checkout of the tools site.
 
 ## Deploys
 
@@ -36,8 +52,8 @@ must be set to **GitHub Actions** (Settings → Pages → Build and deployment �
 The workflow builds with `VITE_BASE` from the repository variable of the same name (set to `/`
 for the live site; the fallback `/site/` is only for a repo without the variable, served at
 `hulf-observatory.github.io/site/`). The repository variables `VITE_MAPS_URL`,
-`VITE_TIMELINE_URL` and `VITE_DATA_URL` point the Layers / City Timeline / Data sources links
-at the companion sites.
+`VITE_TIMELINE_URL`, `VITE_DATA_URL`, `VITE_TOOLS_URL` and `VITE_STORIES_URL` point the
+buttons, links and redirects at the companion sites; unset, the defaults above apply.
 
 ## Domain (hyderabad.urbanobservatory.in)
 

@@ -8,11 +8,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Disclaimer from './pages/Disclaimer';
 import ExternalRedirect from './components/ui/ExternalRedirect';
-import { MAPS_URL, DATA_URL } from './lib/links';
-import ThematicAreas from './pages/explore/ThematicAreas';
-import HyderabadWaterscapes from './pages/stories/HyderabadWaterscapes';
-import GhmcWardsCensus from './pages/stories/GhmcWardsCensus';
-import KgfChangeAnalysis from './pages/stories/KgfChangeAnalysis';
+import { MAPS_URL, DATA_URL, TOOLS_URL, STORIES_URL } from './lib/links';
 import NotFound from './pages/NotFound';
 
 const draftTheme = {
@@ -69,15 +65,15 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
-          {/* the in-site Data Observatory page is offline until the GeoLibre-based page exists;
-              its code stays in pages/explore/DataObservatory.jsx. "Data sources" is the open-data site. */}
+          {/* the in-site Data Observatory page is retired; "Data sources" is the open-data site */}
           <Route path="/explore/data-observatory" element={<ExternalRedirect to={DATA_URL} />} />
           {/* the old spatial data portal is retired; old links go to the map viewer */}
           <Route path="/explore/spatial-data-portal" element={<ExternalRedirect to={MAPS_URL + '/'} />} />
-          <Route path="/explore/thematic-areas" element={<ThematicAreas />} />
-          <Route path="/stories/hyderabad-waterscapes" element={<HyderabadWaterscapes />} />
-          <Route path="/stories/ghmc-wards-census" element={<GhmcWardsCensus />} />
-          <Route path="/stories/kgf-change-analysis" element={<KgfChangeAnalysis />} />
+          {/* Thematic Areas and the stories moved to their own sites (tools., stories.) */}
+          <Route path="/explore/thematic-areas" element={<ExternalRedirect to={TOOLS_URL} />} />
+          <Route path="/stories/hyderabad-waterscapes" element={<ExternalRedirect to={STORIES_URL + 'hyderabad-waterscapes'} />} />
+          <Route path="/stories/ghmc-wards-census" element={<ExternalRedirect to={STORIES_URL + 'ghmc-wards-census'} />} />
+          <Route path="/stories/kgf-change-analysis" element={<ExternalRedirect to={STORIES_URL + 'kgf-change-analysis'} />} />
           {/* anything else: Pages serves 404.html (a copy of index.html), so the router lands here */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { DATA_URL } from '../lib/links';
+import { DATA_URL, TOOLS_URL, STORIES_URL } from '../lib/links';
 import useDocumentTitle from '../lib/useDocumentTitle';
 
 // Catch-all route. Pages serves 404.html (= index.html) for unknown paths, so this is
@@ -14,7 +14,8 @@ export default function NotFound() {
       </div>
       <nav className="not-found-links" aria-label="Where to go instead">
         <Link to="/">Home</Link>
-        <Link to="/explore/thematic-areas">Themes</Link>
+        <a href={TOOLS_URL} rel="noopener">Tools</a>
+        <a href={STORIES_URL} rel="noopener">Stories</a>
         <a href={DATA_URL} rel="noopener">Data sources</a>
       </nav>
     </main>

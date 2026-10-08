@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { MAPS_URL } from '../lib/links';
+import { MAPS_URL, TOOLS_URL, STORIES_URL } from '../lib/links';
 import useDocumentTitle from '../lib/useDocumentTitle';
 
+// the map viewer, the tools and the stories are each their own site
 const ACTIONS = [
-  // the Spatial Data Repository (map viewer) is its own site
-  { label: 'Layers', href: MAPS_URL + '/', external: true },
-  { label: 'Themes', href: '/explore/thematic-areas' },
+  { label: 'Layers', href: MAPS_URL + '/' },
+  { label: 'Tools', href: TOOLS_URL },
+  { label: 'Stories', href: STORIES_URL },
 ];
 
 const ArrowIcon = () => (
@@ -17,7 +17,7 @@ const ArrowIcon = () => (
 
 export default function Home() {
   useDocumentTitle();
-  // a click or tap on the terrain itself nudges the eye to the two buttons
+  // a click or tap on the terrain itself nudges the eye to the three buttons
   const [hint, setHint] = useState(false);
   const timer = useRef(0);
   useEffect(() => {
@@ -36,19 +36,14 @@ export default function Home() {
 
   return (
     <main className="home-main">
-      {hint && <p className="home-hint">Dive deeper — explore the city's layers and themes</p>}
+      {hint && <p className="home-hint">Dive deeper — explore the city's layers, tools and stories</p>}
       <div className={`home-actions${hint ? ' is-hint' : ''}`}>
-        {ACTIONS.map(({ label, href, external }) => (external ? (
+        {ACTIONS.map(({ label, href }) => (
           <a key={label} href={href} rel="noopener" className="home-action">
             {label}
             <ArrowIcon />
           </a>
-        ) : (
-          <Link key={label} to={href} className="home-action">
-            {label}
-            <ArrowIcon />
-          </Link>
-        )))}
+        ))}
       </div>
       <p className="home-credit">
         Terrain: FABDEM 30 m · HMDA region · heights 22× · GHMC in slate, lakes in blue

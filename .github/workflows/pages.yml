@@ -33,6 +33,9 @@ jobs:
           VITE_BASE: ${{ vars.VITE_BASE || '/site/' }}
           VITE_MAPS_URL: ${{ vars.VITE_MAPS_URL }}
           VITE_TIMELINE_URL: ${{ vars.VITE_TIMELINE_URL }}
+          VITE_DATA_URL: ${{ vars.VITE_DATA_URL }}
+          VITE_TOOLS_URL: ${{ vars.VITE_TOOLS_URL }}
+          VITE_STORIES_URL: ${{ vars.VITE_STORIES_URL }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
