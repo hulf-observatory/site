@@ -139,11 +139,23 @@ export default function TerrainHero() {
     const ct = Math.cos((tilt * Math.PI) / 180);
     const n = lines[0].z.length;
     let raf = 0;
+    // No readout within a margin of the page chrome either (buttons, hint, credit, header,
+    // footer): a probe sitting next to a button reads as part of the UI.
+    const CHROME = '.app-header, .home-actions, .home-hint, .home-credit, .app-footer, footer';
+    const MARGIN = 40;
+    const nearChrome = (x, y) => {
+      for (const el of document.querySelectorAll(CHROME)) {
+        const r = el.getBoundingClientRect();
+        if (!r.width && !r.height) continue;
+        if (x >= r.left - MARGIN && x <= r.right + MARGIN && y >= r.top - MARGIN && y <= r.bottom + MARGIN) return true;
+      }
+      return false;
+    };
     const onMove = (e) => {
       // the header, its menu and any link or button are not terrain: a pointer over them
       // clears the probe instead of reading the ridgeline underneath (the burger tap bug)
       const t = e.target instanceof Element ? e.target : null;
-      if (t && t.closest('.app-header, .home-menu, a, button, nav')) {
+      if ((t && t.closest('.app-header, .home-menu, a, button, nav')) || nearChrome(e.clientX, e.clientY)) {
         if (raf) { cancelAnimationFrame(raf); raf = 0; }
         setProbe(null);
         return;
