@@ -106,6 +106,8 @@ a {
 .terrain-probe-label {
   position: absolute; left: 9px; top: -8px; white-space: nowrap;
   font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--text-2);
+  padding: 1px 5px; border-radius: 3px;
+  background: color-mix(in srgb, var(--canvas) 88%, transparent);
   text-shadow: 0 0 3px var(--canvas), 0 0 6px var(--canvas);
 }
 
@@ -122,9 +124,11 @@ a {
   animation: terrain-dot 3.6s ease both;
 }
 .terrain-mark-label {
-  position: absolute; left: 10px; bottom: 30px; white-space: nowrap;
+  position: absolute; left: 10px; bottom: 28px; white-space: nowrap;
   font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; line-height: 1.4;
   color: var(--text-2);
+  padding: 3px 7px 4px; border-radius: 3px;
+  background: color-mix(in srgb, var(--canvas) 88%, transparent);
   text-shadow: 0 0 3px var(--canvas), 0 0 6px var(--canvas), 0 0 10px var(--canvas);
   animation: terrain-label 3.6s ease both;
 }
